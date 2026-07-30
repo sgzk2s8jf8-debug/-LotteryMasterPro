@@ -1,4 +1,4 @@
-const CACHE_NAME = "LotteryMasterPro-v1";
+const CACHE_NAME = "LotteryMasterPro-v2";
 
 const FILES = [
     "./",
