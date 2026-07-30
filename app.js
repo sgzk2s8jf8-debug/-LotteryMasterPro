@@ -343,3 +343,18 @@ function showHistory(){
 
 
 }
+function createBalls(numbers, type="normal") {
+
+    let html = "";
+
+    numbers.forEach(number => {
+
+        html += 
+        `<span class="ball ${type}">
+            ${number}
+        </span>`;
+
+    });
+
+    return html;
+}
