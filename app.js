@@ -1,121 +1,140 @@
-function generate(){
+function randomNumbers(count, max) {
 
+    let numbers = [];
 
-let game =
-document.getElementById("game").value;
+    while (numbers.length < count) {
 
+        let n = Math.floor(Math.random() * max) + 1;
 
-let amount =
-Number(document.getElementById("amount").value);
+        if (!numbers.includes(n)) {
+            numbers.push(n);
+        }
+    }
 
-
-let results =
-document.getElementById("results");
-
-
-results.innerHTML="";
-
-
-let maxNumber;
-
-
-let numbers;
-
-
-switch(game){
-
-
-case "lotto49":
-
-maxNumber=49;
-numbers=6;
-
-break;
-
-
-case "lotto59":
-
-maxNumber=59;
-numbers=6;
-
-break;
-
-
-case "setlife":
-
-maxNumber=47;
-numbers=5;
-
-break;
-
-
-case "euromillions":
-
-maxNumber=50;
-numbers=5;
-
-break;
-
-
-case "eurojackpot":
-
-maxNumber=50;
-numbers=5;
-
-break;
-
-
+    return numbers.sort((a,b)=>a-b);
 }
 
 
-for(let i=0;i<amount;i++){
+
+function generate() {
+
+    let game =
+    document.getElementById("game").value;
 
 
-let combo=[];
+    let amount =
+    Number(document.getElementById("amount").value);
 
 
-while(combo.length<numbers){
+    let results =
+    document.getElementById("results");
 
 
-let n =
-Math.floor(
-Math.random()*maxNumber
-)+1;
+    results.innerHTML = "";
 
 
-if(!combo.includes(n))
-combo.push(n);
+    for (let i = 1; i <= amount; i++) {
 
 
-}
+        let output = "";
 
 
-combo.sort(
-(a,b)=>a-b
-);
+        if (game === "lotto49") {
+
+            let numbers = randomNumbers(6,49);
+
+            output =
+            numbers.join(" - ");
+
+        }
+
+
+        else if (game === "lotto59") {
+
+            let numbers = randomNumbers(6,59);
+
+            output =
+            numbers.join(" - ");
+
+        }
+
+
+        else if (game === "setlife") {
+
+            let numbers =
+            randomNumbers(5,47);
+
+            let lifeBall =
+            Math.floor(Math.random()*10)+1;
+
+
+            output =
+            numbers.join(" - ")
+            +
+            "<br>⭐ Life Ball: "
+            +
+            lifeBall;
+
+        }
+
+
+        else if (game === "euromillions") {
+
+            let numbers =
+            randomNumbers(5,50);
+
+
+            let stars =
+            randomNumbers(2,12);
+
+
+            output =
+            numbers.join(" - ")
+            +
+            "<br>⭐ Lucky Stars: "
+            +
+            stars.join(" - ");
+
+        }
+
+
+        else if (game === "eurojackpot") {
+
+            let numbers =
+            randomNumbers(5,50);
+
+
+            let euro =
+            randomNumbers(2,12);
+
+
+            output =
+            numbers.join(" - ")
+            +
+            "<br>⭐ Euro Numbers: "
+            +
+            euro.join(" - ");
+
+        }
 
 
 
-let div =
-document.createElement("div");
+        let div =
+        document.createElement("div");
 
 
-div.className="result";
+        div.className="result";
 
 
-div.innerHTML =
-"Varianta "
-+(i+1)
-+": <br>"
-+
-combo.join(" - ");
+        div.innerHTML =
+        "Varianta "
+        + i +
+        ":<br>"
+        + output;
 
 
+        results.appendChild(div);
 
-results.appendChild(div);
-
-
-}
-
+    }
 
 }
