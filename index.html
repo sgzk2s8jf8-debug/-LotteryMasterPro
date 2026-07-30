@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LotteryMasterPro</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <meta name="theme-color" content="#111111">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎰 LotteryMasterPro</h1>
+
+    <p class="subtitle">
+        Generator și analiză combinații loto
+    </p>
+
+
+    <div class="card">
+
+        <label>Alege jocul:</label>
+
+        <select id="game">
+
+            <option value="lotto49">
+                Lotto 6/49
+            </option>
+
+            <option value="lotto59">
+                Lotto 6/59
+            </option>
+
+            <option value="setlife">
+                Set For Life
+            </option>
+
+            <option value="euromillions">
+                EuroMillions
+            </option>
+
+            <option value="eurojackpot">
+                EuroJackpot
+            </option>
+
+        </select>
+
+
+        <label>
+            Data:
+        </label>
+
+        <input 
+            type="date" 
+            id="date"
+        >
+
+
+        <label>
+            Număr variante:
+        </label>
+
+        <input 
+            type="number"
+            id="amount"
+            value="5"
+            min="1"
+            max="100"
+        >
+
+
+        <button onclick="generate()">
+            🎲 Generează
+        </button>
+
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Rezultate</h2>
+
+        <div id="results">
+            Nicio combinație generată.
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
