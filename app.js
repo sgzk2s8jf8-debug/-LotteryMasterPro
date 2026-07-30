@@ -41,75 +41,95 @@ function generate() {
 
         if (game === "lotto49") {
 
-            let numbers = randomNumbers(6,49);
-
             output =
-            numbers.join(" - ");
+            "Numere: " +
+            randomNumbers(6,49).join(" - ");
 
         }
 
 
         else if (game === "lotto59") {
 
-            let numbers = randomNumbers(6,59);
-
             output =
-            numbers.join(" - ");
+            "Numere: " +
+            randomNumbers(6,59).join(" - ");
 
         }
 
 
         else if (game === "setlife") {
 
-    let numbers = randomNumbers(5,47);
+            let numbers =
+            randomNumbers(5,47);
 
-    let lifeBall = 
-    Math.floor(Math.random() * 10) + 1;
+            let lifeBall =
+            Math.floor(Math.random()*10)+1;
 
-    output =
-    "Numere: " + numbers.join(" - ")
-    +
-    "<br>🟢 Vila Vieții (Life Ball): "
-    +
-    lifeBall;
 
-}
+            output =
+            "Numere: "
+            + numbers.join(" - ")
+            +
+            "<br>🟢 Life Ball: "
+            + lifeBall;
+
+        }
 
 
         else if (game === "euromillions") {
 
-    let numbers = randomNumbers(5,50);
+            let numbers =
+            randomNumbers(5,50);
 
-    let stars = randomNumbers(2,12);
+            let stars =
+            randomNumbers(2,12);
 
-    output =
-    "Numere: "
-    +
-    numbers.join(" - ")
-    +
-    "<br>⭐ Stele norocoase: "
-    +
-    stars.join(" - ");
 
-}
+            output =
+            "Numere: "
+            + numbers.join(" - ")
+            +
+            "<br>⭐ Lucky Stars: "
+            + stars.join(" - ");
+
+        }
 
 
         else if (game === "eurojackpot") {
 
-    let numbers = randomNumbers(5,50);
+            let numbers =
+            randomNumbers(5,50);
 
-    let euroNumbers = randomNumbers(2,12);
+            let euro =
+            randomNumbers(2,12);
 
-    output =
-    "Numere: "
-    +
-    numbers.join(" - ")
-    +
-    "<br>⭐ Numere Euro: "
-    +
-    euroNumbers.join(" - ");
 
-}
+            output =
+            "Numere: "
+            + numbers.join(" - ")
+            +
+            "<br>⭐ Euro Numbers: "
+            + euro.join(" - ");
+
+        }
+
+
+
+        let ticket = {
+
+            game: game,
+
+            date:
+            new Date()
+            .toLocaleString(),
+
+            numbers:
+            output
+
+        };
+
+
+        saveHistory(ticket);
 
 
 
@@ -121,10 +141,34 @@ function generate() {
 
 
         div.innerHTML =
+
         "Varianta "
-        + i +
-        ":<br>"
-        + output;
+        + i
+        + ":<br>"
+        + output
+        +
+        "<br><br>";
+
+
+        let button =
+        document.createElement("button");
+
+
+        button.innerHTML =
+        "⭐ Salvează Favorite";
+
+
+        button.onclick=function(){
+
+            saveFavorite(ticket);
+
+            button.innerHTML =
+            "✅ Salvat";
+
+        };
+
+
+        div.appendChild(button);
 
 
         results.appendChild(div);
