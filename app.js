@@ -61,61 +61,55 @@ function generate() {
 
         else if (game === "setlife") {
 
-            let numbers =
-            randomNumbers(5,47);
+    let numbers = randomNumbers(5,47);
 
-            let lifeBall =
-            Math.floor(Math.random()*10)+1;
+    let lifeBall = 
+    Math.floor(Math.random() * 10) + 1;
 
+    output =
+    "Numere: " + numbers.join(" - ")
+    +
+    "<br>🟢 Vila Vieții (Life Ball): "
+    +
+    lifeBall;
 
-            output =
-            numbers.join(" - ")
-            +
-            "<br>⭐ Life Ball: "
-            +
-            lifeBall;
-
-        }
+}
 
 
         else if (game === "euromillions") {
 
-            let numbers =
-            randomNumbers(5,50);
+    let numbers = randomNumbers(5,50);
 
+    let stars = randomNumbers(2,12);
 
-            let stars =
-            randomNumbers(2,12);
+    output =
+    "Numere: "
+    +
+    numbers.join(" - ")
+    +
+    "<br>⭐ Stele norocoase: "
+    +
+    stars.join(" - ");
 
-
-            output =
-            numbers.join(" - ")
-            +
-            "<br>⭐ Lucky Stars: "
-            +
-            stars.join(" - ");
-
-        }
+}
 
 
         else if (game === "eurojackpot") {
 
-            let numbers =
-            randomNumbers(5,50);
+    let numbers = randomNumbers(5,50);
 
+    let euroNumbers = randomNumbers(2,12);
 
-            let euro =
-            randomNumbers(2,12);
+    output =
+    "Numere: "
+    +
+    numbers.join(" - ")
+    +
+    "<br>⭐ Numere Euro: "
+    +
+    euroNumbers.join(" - ");
 
-
-            output =
-            numbers.join(" - ")
-            +
-            "<br>⭐ Euro Numbers: "
-            +
-            euro.join(" - ");
-
-        }
+}
 
 
 
