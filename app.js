@@ -176,3 +176,170 @@ function generate() {
     }
 
 }
+function hidePages(){
+
+    document.querySelector(".container").style.display = "none";
+
+    document.getElementById("favoritesPage").style.display = "none";
+
+    document.getElementById("historyPage").style.display = "none";
+
+}
+
+
+
+function showGenerator(){
+
+    hidePages();
+
+    document.querySelector(".container").style.display = "block";
+
+}
+
+
+
+function showFavorites(){
+
+    hidePages();
+
+    document.getElementById("favoritesPage").style.display = "block";
+
+
+    let box =
+    document.getElementById("favorites");
+
+
+    box.innerHTML="";
+
+
+    let favorites =
+    getFavorites();
+
+
+    if(favorites.length === 0){
+
+        box.innerHTML =
+        "Nu ai bilete favorite încă.";
+
+        return;
+
+    }
+
+
+
+    favorites.forEach((ticket,index)=>{
+
+
+        let div =
+        document.createElement("div");
+
+
+        div.className="result";
+
+
+        div.innerHTML =
+
+        "<b>"
+        + ticket.game
+        +"</b><br>"
+        +
+        ticket.numbers
+        +
+        "<br>"
+        +
+        ticket.date
+        +
+        "<br><br>";
+
+
+
+        let button =
+        document.createElement("button");
+
+
+        button.innerHTML =
+        "❌ Șterge";
+
+
+        button.onclick=function(){
+
+            deleteFavorite(index);
+
+            showFavorites();
+
+        };
+
+
+        div.appendChild(button);
+
+
+        box.appendChild(div);
+
+
+    });
+
+
+}
+
+
+
+function showHistory(){
+
+    hidePages();
+
+    document.getElementById("historyPage").style.display = "block";
+
+
+    let box =
+    document.getElementById("history");
+
+
+    box.innerHTML="";
+
+
+    let history =
+    getHistory();
+
+
+
+    if(history.length === 0){
+
+        box.innerHTML =
+        "Nu există istoric.";
+
+        return;
+
+    }
+
+
+
+    history.forEach(ticket=>{
+
+
+        let div =
+        document.createElement("div");
+
+
+        div.className="result";
+
+
+        div.innerHTML =
+
+        "<b>"
+        + ticket.game
+        +"</b><br>"
+        +
+        ticket.numbers
+        +
+        "<br>"
+        +
+        ticket.date;
+
+
+        box.appendChild(div);
+
+
+    });
+
+
+}
